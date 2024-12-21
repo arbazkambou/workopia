@@ -2,24 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\HomeController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-Route::get('/test', function(Request $request){
-return response()->json(['hello'=>"g"])->cookie('name','arbaz',60);
-});
-
-
-
-Route::get('/read-cookie', function(Request $request){
-
-    $cookie=$request->cookie('name');
-    return response()->json(['cookie'=>$cookie]);
-});
-
+Route::get('/',[HomeController::class,'index']);
+Route::resource('/jobs',JobController::class);
 
